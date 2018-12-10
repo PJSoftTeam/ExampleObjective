@@ -1,0 +1,8 @@
+name: ExampleObjective
+main: PJSoft\ExampleObjective\Main
+version: 1.0.0
+api: [3.3.0]
+load: POSTWORLD
+author: PJSoft
+desctiption: PocketMine-MP ExampleObjective Plugin
+website: http://pjsoft.asvd.net/
