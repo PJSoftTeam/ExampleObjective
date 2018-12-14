@@ -29,15 +29,17 @@
         
         public function onEnable(): void
         {
+            //コンソールにメッセージ送信
             $this->getLogger()->info("§l§e{$this->getDescription()->getName()}§rが読み込まれました！");
-            
+            //イベントをTestListener1クラスで使用する宣言
             $this->getServer()->getPluginManager()->registerEvents(new TestListener1($this), $this);
-            
-            $this->getScheduler()->scheduleDelayedRepeatingTask(new TestTask1($this), 20 * 10, 0);
+            //TestTask1クラスでRepeatingTask(繰り返し、タスクを10秒ごとに呼ぶ)を使う
+            $this->getScheduler()->scheduleRepeatingTask(new TestTask1($this), 20 * 10);
         }
         
         public function onDisable(): void
         {
+            //コンソールにメッセージ送信
             $this->getLogger()->info("§l§e{$this->getDescription()->getName()}§rを終了しました！");
         }
 

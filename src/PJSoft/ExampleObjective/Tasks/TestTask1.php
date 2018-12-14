@@ -27,16 +27,19 @@
     {
         
         private $owner;
-        
+    
+        //インスタンス生成時 new TestTask1();をしたときの引数を設定
         public function __construct(Main $owner)
         {
+            //$this->owner (private $owner)にMainクラスを入れる
             $this->owner = $owner;
         }
         
         public function onRun(int $currentTick): void
         {
-            //処理
+            //コンソールにメッセージを送る
             $this->owner->getLogger()->info("コンソールに送ります");
+            //メッセージを全員に送る
             $this->owner->getServer()->broadcastMessage("全体に送ります");
         }
         

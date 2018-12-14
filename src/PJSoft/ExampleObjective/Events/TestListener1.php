@@ -30,14 +30,19 @@
         /** @var Main */
         private $owner;
         
+        //インスタンス生成時 new TestListener1();をしたときの引数を設定
         public function __construct(Main $owner)
         {
+            //$this->owner (private $owner)にMainクラスを入れる
             $this->owner = $owner;
         }
         
+        //プレイヤーがJoinしたとき
         public function onJoin(PlayerJoinEvent $event): void
         {
+            //$playerにプレイヤーオブジェクトを代入する($playerに入れる)
             $player = $event->getPlayer();
+            //TestTask2を10秒後に呼ぶ
             $this->owner->getScheduler()->scheduleDelayedTask(new TestTask2($this->owner, $player), 20 * 10);
         }
     }

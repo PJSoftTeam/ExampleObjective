@@ -31,20 +31,27 @@
         
         /** @var Player  */
         private $player;
-        
+    
+        //インスタンス生成時 new TestTask2();をしたときの引数を設定
         public function __construct(Main $owner, Player $player)
         {
+            //$this->owner (private $owner)にMainクラスを入れる
             $this->owner = $owner;
+            //$this->player (private $player)にプレイヤーオブジェクトを入れる
             $this->player = $player;
         }
         
         public function onRun(int $currentTick): void
         {
-            //処理
+            //そのプレイヤー($this->player)にメッセージを送る
             $this->player->sendMessage("プレイヤーにメッセージを送ります");
-            $inventory = $this->player->getInventory();//インベントリを取得する
-            $inventory->getHeldItemIndex();//今持ってるアイテム欄の位置を取得する
+            //インベントリ取得
+            $inventory = $this->player->getInventory();
+            //今持ってるアイテム欄の位置を取得する
+            $inventory->getHeldItemIndex();
+            //コンソールにメッセージを送る
             $this->owner->getLogger()->info("コンソールに送ります");
+            //メッセージを全員に送る
             $this->owner->getServer()->broadcastMessage("全体に送ります");
         }
         
